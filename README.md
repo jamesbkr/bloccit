@@ -28,4 +28,6 @@ To watch some training videos, visit http://www.youtube.com/user/c9ide
 ## Bloccit: a Reddit Clone to tech the fundamentals od web developement Rails.
 
 ## Made with my mentor at [Bloc](http://bloc.io).
+## The heroku approved app name is bloccit-jb
+#  The address it is deployed at is https://git.heroku.com/bloccit-jb.git
 
