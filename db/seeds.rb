@@ -14,9 +14,7 @@ require 'faker'
         
         
         )
-        
 end
-
 
 posts = Post.all
 
@@ -27,6 +25,14 @@ posts = Post.all
     )
     
 end
+
+
+Post.create!(
+    title: "THIS IS THE UNIQUE SEED",
+    body: "THIS IS THE UNIQUE SEED"
+    
+    )
+
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
