@@ -27,6 +27,15 @@ posts = Post.all
     )
     
 end
+random = Random.new
+
+50.times do
+    Advertisement.create!(
+        title: Faker::Lorem.sentence,
+        copy: Faker::Lorem.paragraph,
+        price: random.rand(500)
+        )
+end
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
