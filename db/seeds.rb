@@ -27,11 +27,8 @@ posts = Post.all
 end
 
 
-Post.create!(
-    title: "THIS IS THE UNIQUE SEED",
-    body: "THIS IS THE UNIQUE SEED"
-    
-    )
+
+Post.where(title: "THIS IS THE UNIQUE SEED", body: "THIS IS THE UNIQUE SEED").first_or_create
 
 
 puts "Seed finished"
