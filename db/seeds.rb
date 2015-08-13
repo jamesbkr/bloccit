@@ -14,9 +14,7 @@ require 'faker'
         
         
         )
-        
 end
-
 
 posts = Post.all
 
@@ -36,6 +34,11 @@ random = Random.new
         price: random.rand(500)
         )
 end
+
+
+
+Post.where(title: "THIS IS THE UNIQUE SEED", body: "THIS IS THE UNIQUE SEED").first_or_create
+
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
