@@ -6,12 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
+include RandomData
+
+
+
+15.times do
+    Topic.create!(
+        name: RandomData.random_sentence,
+        description: RandomData.random_paragraph
+        )
+    end
+    
+    
+ topics =Topic.all
+
 
 50.times do 
     Post.create!(
         title: Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraph
-        
+        body: Faker::Lorem.paragraph,
+        topic: topics.sample
         
         )
 end
@@ -37,9 +51,11 @@ end
 
 
 
+
 Post.where(title: "THIS IS THE UNIQUE SEED", body: "THIS IS THE UNIQUE SEED").first_or_create
 
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Topic.count} topics created"
