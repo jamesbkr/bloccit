@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) {User.create!(name:"Bloccit User", email:"user@bloccit.com", password:"password" )}
+  let(:user) {User.create!(name:"Bloccit user", email:"users@bloccit.com", password:"password" )}
   
   it { should validate_presence_of(:name)}
   it {should validate_length_of(:name).is_at_least(1) }
@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
   it {should validate_presence_of(:email)}
   it {should validate_uniqueness_of(:email)}
   it {should validate_length_of(:email).is_at_least(3)}
-  it {should allow_value("user@bloccit.com").for(:email)}
+  it {should allow_value("users@bloccit.com").for(:email)}
   it {should_not allow_value("userbloccit.com").for(:email)}
   
   it {should validate_presence_of(:password)}
@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
       end
  end 
       describe "invalid user" do 
-          let(:user_with_invalid_name) {User.new(name:"", email:"user@bloccit.com" )}
+          let(:user_with_invalid_name) {User.new(name:"", email:"use@bloccit.com" )}
           let(:user_with_invalid_email) {User.new(name:"Bloccit User", email:"")}
           let(:user_with_invalid_email_format) {User.new(name:"Bloccit User", email:"invalid_format" )}
           
