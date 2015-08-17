@@ -1,7 +1,7 @@
 <h1>Edit Post</h1>
 
 <div class="row">
-    <div class="col-mod-4">
+    <div class="col-md-4">
         <p>Guidelines for posts</p>
         <ul>
             <li>Make sure it rhymes</li>
@@ -9,19 +9,7 @@
             <li>The incessant use of hashtags will get you banned</li>
         </ul>
     </div>
-    <div class="col-mod-8">
-        <%= form_for [@post.topic ,@post] do |f| %>
-        <div class="form-group">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: 'formm-cotrol', placeholder: "enter post title" %>
-        </div>
-        <div class="form-group">
-            <%= f.label :body %>
-            <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "enter the body" %>
-        </div>
-        <div class= "form-goup">
-            <%= f.submit "Save", class: 'btn btn-succcess'  %>
-        </div>
-    <% end %>
+    <div class="col-md-8">
+        <%= render partial: 'form', locals: { topic: @post.topic, post:@post} %>
     </div>
 </div>
