@@ -8,7 +8,14 @@
 require 'faker'
 include RandomData
 
-
+ 5.times do
+   user = User.create!(
+   name:     RandomData.random_name,
+   email:    RandomData.random_email,
+   password: RandomData.random_sentence
+   )
+ end
+ users = User.all
 
 15.times do
     Topic.create!(
@@ -23,6 +30,7 @@ include RandomData
 
 50.times do 
     Post.create!(
+        user: users.sample,
         title: Faker::Lorem.sentence,
         body: Faker::Lorem.paragraph,
         topic: topics.sample
@@ -59,3 +67,4 @@ puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Topic.count} topics created"
+puts "#{User.count} users were created"
