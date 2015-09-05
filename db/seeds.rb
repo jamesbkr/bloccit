@@ -11,7 +11,7 @@ include RandomData
  
  admin = User.create!(
    name:     'Admin User',
-   email:    'admin@example.com',
+   email:    'admin@e50xample.com',
    password: 'helloworld',
    role:     'admin'
  )
