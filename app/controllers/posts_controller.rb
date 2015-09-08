@@ -18,6 +18,7 @@ before_action :authorize_user, except: [:show, :new, :create]
       @post.user = current_user
   
     if @post.save
+        @post.labels = Label.update_labels(params[:post][:labels])
         flash[:notice] = "your post was created successfully"
         redirect_to [@topic, @post]
     else 
@@ -34,6 +35,7 @@ before_action :authorize_user, except: [:show, :new, :create]
     @post = Post.find(params[:id])
    @post.assign_attributes(post_params)
     if @post.save
+      @post.labels = Label.update_labels(params[:post][:labels])
       flash[:notice] = "Post was updated"
       redirect_to [@post.topic, @post]
     else 
