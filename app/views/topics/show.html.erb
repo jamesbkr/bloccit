@@ -7,20 +7,8 @@
     <div class="col-md-8">
         <p class= "lead"><%= @topic.description %></p>
        
-        <% @topic.posts.each do |h| %> 
-     
-        <div class="media">
-            <div class="media-body">
-                <h4 class = "media-heading">
-                <%= link_to h.title, topic_post_path(@topic, h) %>
-                </h4>  
-                <small>
-                submitted <%= time_ago_in_words(h.created_at) %> ago by <%= h.user.name %> <br>
-                <%= h.comments.count %> Comments
-                </small>
-            </div>
-        </div>
-    <% end %>
+        <h3>Posts</h3>
+        <%= render @topic.posts %>
     </div>
 <% if user_is_authorized_for_topics? %>
     <div class="col-md-4">

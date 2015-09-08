@@ -14,28 +14,6 @@
             <li>The incessant use of hashtags will get you banned</li>
         </ul>
     </div>
-    
-    <div class="col-md-8">
-        <%= form_for @topic do |f| %>
-        
-        <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-cotrol', placeholder: "enter topic title" %>
-        </div>
-        
-        <div class="form-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "enter the body" %>
-        </div>
-        
-        <div class="form-group">
-            <%= f.label :public, class: 'checkbox' do %>
-            <%= f.check_box :public %> Public Topic
-            <% end %>
-        </div>
-        
-            <%= f.submit "Save", class: 'btn btn-succcess'  %>
-     
-    <% end %>
-    </div>
+     <%= render partial: 'form' %>
+   
 </div>
