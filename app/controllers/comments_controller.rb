@@ -25,6 +25,8 @@ class CommentsController < ApplicationController
        redirect_to [comment.post.topic, comment.post]
      end
    end
+   
+   
    def create
 
      @post = Post.find(params[:post_id])

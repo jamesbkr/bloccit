@@ -108,6 +108,8 @@ require 'rails_helper'
      end
 
 end
+
+
 describe "update_post callback" do
      it "triggers update_post on save" do
       expect(vote).to receive(:update_post).at_least(:once)
