@@ -5,10 +5,16 @@ class TopicsController < ApplicationController
     
     
     def index
-        @topics = Topic.all
+        @topics = Topic.visible_to(current_user)
     end
     def show
         @topic = Topic.find(params[:id])
+       
+       
+        unless @topic.public || current_user
+        flash[:error] = "you must be signed in to view the rivate topic"
+        redirect_to new_session_path
+        end
     end
     def new
         @topic = Topic.new
