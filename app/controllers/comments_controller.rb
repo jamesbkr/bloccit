@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
    before_action :require_sign_in
    before_action :authorize_user, only: [:destroy]
+   respond_to :html, :js
 
    def destroy
      @post = Post.find(params[:post_id])
@@ -12,10 +13,7 @@ class CommentsController < ApplicationController
      else
        flash[:error] = "Comment couldn't be deleted. Try again."
      end
-     respond_to do |format|
-       format.html
-       format.js
-     end
+ 
    end
 
 
@@ -40,10 +38,6 @@ class CommentsController < ApplicationController
        flash[:notice] = "Comment saved successfully."
      else
        flash[:error] = "Comment failed to save."
-     end
-      respond_to do |format|
-       format.html
-       format.js
      end
    end
  
