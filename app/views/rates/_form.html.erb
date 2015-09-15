@@ -1,0 +1,7 @@
+  <div class="form-group">
+    <%= f.label :rate %>
+    <%= f.text_field :rate,
+                     class: 'form-control',
+                     placeholder: "Enter rating: 0-G, 1-PG, 2-PG-13",
+                    value: rate.map(&:rate).join(', ') %>
+  </div>
