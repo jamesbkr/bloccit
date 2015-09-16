@@ -9,8 +9,8 @@ class Post < ActiveRecord::Base
     
     default_scope { order('rank DESC') }
     
-    scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
-    
+   scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
+    after_create :favorite_post
     
     validates :title, length: { minimum: 5}, presence: true
     validates :body, length: { minimum:20}, presence: true
@@ -36,5 +36,13 @@ class Post < ActiveRecord::Base
      update_attribute(:rank, new_rank)
    end
     
+    
+    private
+    
+       def favorite_post
+          user.favorites.create(post: self)
+          FavoriteMailer.new_post(user, self).deliver_now
+        
+       end
     
 end
