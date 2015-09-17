@@ -70,11 +70,6 @@ RSpec.describe User, type: :model do
          expect(user.admin?).to be_truthy
        end
      end
-  
-    
-    
-    
-    
     
       it "shoudl respond to name" do
           expect(user).to respond_to(:name)
@@ -83,6 +78,8 @@ RSpec.describe User, type: :model do
           expect(user).to respond_to(:email)
       end
  end 
+ 
+ 
       describe "invalid user" do 
            let(:user_with_invalid_name) { build(:user, name: "") }
            let(:user_with_invalid_email) { build(:user, email: "") }
@@ -99,24 +96,30 @@ RSpec.describe User, type: :model do
               expect(user_with_invalid_email_format).to_not be_valid
           end
       end
-       describe "#favorite_for(post)" do
+      
+      
+describe "#favorite_for(post)" do
      before do
        topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)
        @post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
      end
  
      it "returns `nil` if the user has not favorited the post" do
- # #1
+
        expect(user.favorite_for(@post)).to be_nil
      end
  
      it "returns the appropriate favorite if it exists" do
- # #2
+
        favorite = user.favorites.where(post: @post).create
- # #3
+
        expect(user.favorite_for(@post)).to eq(favorite)
      end
    end
-      
+     describe "#generate_auth_token" do
+     it "creates a token" do
+       expect(user.auth_token).to_not be_nil
+     end
+   end 
   end
 

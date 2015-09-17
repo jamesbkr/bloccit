@@ -20,6 +20,18 @@ Rails.application.routes.draw do
  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'welcome#index'
+  
+   namespace :api do
+     namespace :v1 do
+       resources :users, only: [:index, :show]
+       resources :topics, only: [:index, :show]
+     end
+   end
+  
+  
+  
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
