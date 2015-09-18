@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     has_many :comments, dependent: :destroy
     has_many :votes, dependent: :destroy
     has_many :favorites, dependent: :destroy
-    
+    has_many :favorited_posts, :through => :favorites, :source => :post
     
     
     before_save { self.email = email.downcase}
@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
     ##    self.name =  arr1.join(' ')
     ##   }
     EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+[a-z]+\z/i
+    
+    
     
     validates :name, length: { minimum: 1, maximum: 100 }, presence: true
     validates :password, presence: true, length: { minimum: 6 }

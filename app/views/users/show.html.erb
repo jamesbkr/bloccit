@@ -18,9 +18,34 @@
      </div>
    </div>
  </div>
+ <div class="row">
+ <div class="col-md-4">
+
+ <% if @user.posts.count > 0  %><h2>Posts</h2> <% end %>
+ <div class="row"><%= countPosts %></div>
+
+ <% if @user.comments.count > 0  %><h2>Comments</h2><% end %>
+<div class="row"><%= countComments %></div>
  
- <h2>Posts</h2>
- <%= render @user.posts %>
  
- <h2>Comments</h2>
- <%= render @user.comments %>
+</div>
+<div class="col-md-8">
+ <% if @user.favorites.count > 0  %><h2>Favorited Posts</h2><% end %>
+   <%  @postsFavorited.each do |f| %>
+   
+ 
+   <%= render f %>
+ 
+   <div class="col-md-2">
+    <%= image_tag User.avatar_url(f.user, 48), class: "gravatar" %>
+    </div>
+    <div class="col-md-2">
+    Number of votes  <%= f.votes.count %>
+    </div>
+    <div class="col-md-2">
+    Number of comments  <%= f.comments.count %>
+    </div>
+    
+    <% end %>
+</div>
+</div>
