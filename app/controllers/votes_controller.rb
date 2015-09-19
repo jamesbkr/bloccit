@@ -1,18 +1,26 @@
 class VotesController < ApplicationController
     before_action :require_sign_in
-
+   
 
 def up_vote
-     update_vote(1)
-     redirect_to :back
+    
+    respond_to do |format|
+        format.html   {update_vote(1)}
+        format.js     {  update_vote(1) }
+    end
+ 
 end
    
 def down_vote
-     update_vote(-1)
-     redirect_to :back
+     respond_to do |format|
+        format.html   {update_vote(-1)}
+        format.js     {  update_vote(-1) }
+    end
+ 
+
 end
  
-private  
+
    
    
    def update_vote(new_value)
