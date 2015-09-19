@@ -11,6 +11,7 @@
    def show
        topic = Topic.find(params[:id])
      render json: topic.to_json, status: 200
+     render json: topic.posts.to_json, status: 200
    end
  def update
      topic = Topic.find(params[:id])
