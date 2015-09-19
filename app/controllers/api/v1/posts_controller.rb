@@ -6,10 +6,51 @@
      post = Post.find(params[:id])
      render json: post.to_json, status: 200
      render json: post.comments.to_json, status: 200
+     render json: post.votes.to_json, status: 200
+     render json: post.favorites.to_json, status: 200
    end
  
    def index
      posts = Posts.all
      render json: posts.to_json, status: 200
    end
+   
+   
+ def update
+     post = Post.find(params[:id])
+     
+     if post.update_attributes(post_params)
+         render json: post.to_json, status: 200
+     else
+         render json: {error: "post update failed", status: 400}, status: 400
+     end
  end
+ 
+ def create
+    post = Post.new(post_params)
+ 
+       if post.valid?
+          post.save!
+          render json: post.to_json, status: 201
+         else
+           render json: {error: "post is invalid", status: 400}, status: 400
+       end
+ end
+ 
+ def destroy
+      post = Post.find(params[:id])
+ 
+     if post.destroy
+       render json: {message: "post destroyed", status: 200}, status: 200
+     else
+       render json: {error: "post destroy failed", status: 400}, status: 400
+     end
+ end
+ 
+ private
+    def post_params
+        params.require(:post).permit(:title, :body)
+    end
+   
+ end
+ 
