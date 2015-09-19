@@ -8,6 +8,11 @@
      render json: post.comments.to_json, status: 200
      render json: post.votes.to_json, status: 200
      render json: post.favorites.to_json, status: 200
+     
+    #  render json: {
+    #      post: post,
+    #      comments: 
+    #  }, status 200
    end
  
    def index
