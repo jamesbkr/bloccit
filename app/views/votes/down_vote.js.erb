@@ -1,1 +1,4 @@
 
+<% if @vote == true %>
+    $('#post_voteCount-'+<%= @post.id %> ).html("<%= @post.points %>")
+<% end %>

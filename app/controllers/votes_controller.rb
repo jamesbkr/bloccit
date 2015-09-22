@@ -1,27 +1,25 @@
 class VotesController < ApplicationController
     before_action :require_sign_in
-   
+    respond_to :html, :js
 
 def up_vote
-    
-    respond_to do |format|
-        format.html   {update_vote(1)}
-        format.js     {  update_vote(1) }
-    end
+    @post = Post.find(params[:post_id])
+    @vote = update_vote(1)
+   
+   
+
  
 end
    
 def down_vote
-     respond_to do |format|
-        format.html   {update_vote(-1)}
-        format.js     {  update_vote(-1) }
-    end
+    @post = Post.find(params[:post_id])
+    @vote = update_vote(-1)
  
 
 end
  
 
-   
+   private
    
    def update_vote(new_value)
      @post = Post.find(params[:post_id])

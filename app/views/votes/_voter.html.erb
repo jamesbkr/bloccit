@@ -1,10 +1,13 @@
 
-
 <% if current_user %>
 
 <div class="pull-left vote-arrows">
    <div><%= link_to " ", post_up_vote_path(post), class: 'glyphicon glyphicon-chevron-up', method: :post, remote: true%></div>
-   <div class='js-votes-count'><strong><%= post.points %></strong></div>
+   <strong>
+      <%= content_tag :div, id: "post_voteCount-#{post.id}" do %>
+         <%= post.points %>
+      <% end %>
+   </strong>
    <div><%= link_to " ", post_down_vote_path(post), class: 'glyphicon glyphicon-chevron-down', method: :post, remote: true %></div>
  </div>
  
