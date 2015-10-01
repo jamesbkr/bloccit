@@ -4,7 +4,7 @@
  
    def show
      post = Post.find(params[:id])
-     render json: {post: :post, comments: :post.comments, votes: :post.votes, favorites: :post.favorites}, status: 200
+     render json: {post: :post, comments: :post.comments.to_json, votes: :post.votes.to_json, favorites: :post.favorites,to_json}, status: 200
 
      
     #  render json: {
